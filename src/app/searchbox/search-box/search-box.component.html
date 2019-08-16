@@ -1,0 +1,13 @@
+<div>
+  <input type="text" [(ngModel)]="query" (keyup)="search($event)" placeholder="search some thing">
+
+
+  <div *ngFor="let item of results ">
+    <p [ngStyle]="{
+      'color': 'red'
+    }">
+      {{item.name}}
+    </p>
+  </div>
+
+</div>

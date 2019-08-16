@@ -1,0 +1,65 @@
+<input type="text" placeholder=" search produce name " [(ngModel)]="filterProducts" />
+<div>
+  <button on-click="showtable()"> show </button>
+</div>
+<!-- [ngStyle]="{'border-collapse': separate,'border': 1px solid black}" -->
+<table>
+  <tr style="border: 1px solid black; 
+  border-collapse: separate">
+    <th></th>
+    <th>productName</th>
+    <th>productCode</th>
+    <th>releaseDate</th>
+    <th [hidden]="show">price</th>
+    <th [hidden]="show">Rating</th>
+  </tr>
+  <tbody>
+
+    <ng-container *ngFor=" let product of result | product :filterProducts | async">
+      <tr *ngIf="isVaild(product),else merge">
+
+        <td>
+          <img [src]="product.imageUrl " style="width :50px" />
+        </td>
+        <td>{{product.productName}}</td>
+        <td>{{product.productCode}}</td>
+        <td>{{product.releaseDate}}</td>
+        <td [hidden]="show">{{product.price}}</td>
+        <td [hidden]="show">{{product.starRating}}</td>
+      </tr>
+      <ng-template #merge>
+        <tr>
+          <td [attr.colspan]='show?4:6'>no result</td>
+        </tr>
+      </ng-template>
+
+
+    </ng-container>
+  </tbody>
+</table>
+
+
+<!-- <input #phone placeholder="phone number">
+
+<button (click)="callPhone(phone)">Call</button> -->
+
+<!-- <app-line #helloComp [input]="'hello'"></app-line> -->
+
+<!-- {{helloComp.name}} -->
+<!-- {{helloComp.input}} -->
+
+
+
+<!-- <app-line>
+  <h1>add some</h1>>
+</app-line> -->
+
+<!-- <app-line></app-line> -->
+
+
+<!-- <app-pagenav [dataTotal]="25" [pageIndex]="1" [pageSize]="5"></app-pagenav> -->
+<!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator> -->
+<button [disabled]="isFirst  === true ? true : null" (click)=substractpage()>previous </button>
+{{pageNum}}
+<button [disabled]="isLast === true ? true : null" (click)=addpage()>next</button>

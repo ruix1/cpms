@@ -1,0 +1,36 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="form-group">
+    <label class="control-label"> email:</label>
+    <input type="text" class="form-control" name="email" formControlName="email" />
+    <div *ngIf="!profileForm.get('email').valid && profileForm.get('email').touched">
+      <div class="alert alert-danger" *ngIf="profileForm.get('email').errors.required">please enter email</div>
+      <div class="alert alert-danger" *ngIf="!profileForm.get('email').valid">please enter @ email</div>
+    </div>
+
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label"> password:</label>
+    <input type="text" class="form-control" name="password" formControlName="password" />
+    <div *ngIf="!profileForm.get('password').valid && profileForm.get('password').touched">
+      <div class="alert alert-danger" *ngIf="profileForm.get('password').errors.required">please enter password</div>
+      <div class="alert alert-danger" *ngIf="!profileForm.get('password').valid">please enter password bigger than 8
+      </div>
+    </div>
+  </div>
+
+  <label>
+    textarea:
+  </label>
+  <textarea class="form-control" [(ngModel)]="content1" formControlName="content"></textarea>
+
+  <p>counter: {{getlength()}}</p>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<p>
+  Form Status: {{ profileForm.status }}
+</p>

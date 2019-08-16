@@ -1,0 +1,16 @@
+<input type="text" placeholder="add to do list" [(ngModel)]="todo" (keyup.enter)='addtodo($event)'>
+
+
+<div class="demo-box" ngClass="centered-text underlined" class="orange">
+
+  <li *ngFor="let item of todoList">
+    {{item}}
+    <!-- <i (click)="deleteItem(item)">delete</i> -->
+    <button (click)="deleteItem(item)">x</button>
+  </li>
+
+</div>
+
+
+
+<p appSearchbox> hah</p>

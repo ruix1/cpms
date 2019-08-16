@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Test</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/home']">Home</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/todolist']">todolist</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/eleref']">eleref</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/searchbox']">search box</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/cisco']">cisco</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/list']">list</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" [routerLink]="['/table']">table</a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <a href="#" [routerLink]="['/ds']">ds</a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <a href="#" [routerLink]="['/login']">Login</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!authStatus ">
+          <a href="#" [routerLink]="['/signup']">Registration</a>
+        </li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="authStatus ">
+          <a href="#" [routerLink]="['/login']" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>

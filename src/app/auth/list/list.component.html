@@ -1,0 +1,30 @@
+<div>
+  <table class="mytable">
+    <thead>
+      <tr>
+        <th (click)="sortAccount()" class="headleft">Account<i [ngClass]={up:ascendingAccount,down:!ascendingAccount}></i></th>
+        <th (click)="sortCash()" class="headright">
+          <div class="availableCash"><i [ngClass]="{up:ascendingSort, down:!ascendingSort}"></i>Available
+            Cash</div>
+          <div class="todayChange">Today's change</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let accountList of accountLists">
+        <td class="left">{{accountList.name}}
+        <td class="right">
+          <div>${{accountList.cur_cash}}</div>
+          <div class="pre-cash-container" [ngStyle]="getColor(accountList.status)">
+            <span>{{accountList.ratio}}/</span>
+            <span>{{accountList.pre_cash}}</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr (click)="loadmore()" *ngIf="isCollapse">
+        <td class="loadmore" colspan="2">load more</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
